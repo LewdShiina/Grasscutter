@@ -13,10 +13,21 @@ public final class ReloadCommand implements CommandHandler {
 
     @Override
     public void execute(GenshinPlayer sender, List<String> args) {
-        CommandHandler.sendMessage(sender, "Reloading config.");
-        Grasscutter.loadConfig();
-        Grasscutter.getGameServer().getGachaManager().load();
-        Grasscutter.getDispatchServer().loadQueries();
+        if(args.size() == 0 || args.contains("config") || args.contains("all")) {
+            CommandHandler.sendMessage(sender, "Reloading config.");
+            Grasscutter.loadConfig();
+        }
+
+        if(args.size() == 0 || args.contains("gacha") || args.contains("all")) {
+            CommandHandler.sendMessage(sender, "Reloading gacha.");
+            Grasscutter.getGameServer().getGachaManager().load();
+        }
+
+        if(args.size() == 0 || args.contains("queries") || args.contains("all")) {
+            CommandHandler.sendMessage(sender, "Reloading queries.");
+            Grasscutter.getDispatchServer().loadQueries();
+        }
+        
         CommandHandler.sendMessage(sender, "Reload complete.");
     }
 }
