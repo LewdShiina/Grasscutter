@@ -19,7 +19,7 @@ public final class GiveCharCommand implements CommandHandler {
         int target, avatarId, level = 1, ascension;
 
         if (sender == null && args.size() < 2) {
-            CommandHandler.sendMessage(null, "Usage: givechar <player> <itemId|itemName> [amount]");
+            CommandHandler.sendMessage(null, "Usage: givechar <player> <avatarId> [level]");
             return;
         }
 
