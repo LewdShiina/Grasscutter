@@ -1,6 +1,8 @@
 package emu.grasscutter.server.packet.send;
 
 import emu.grasscutter.GenshinConstants;
+import emu.grasscutter.Grasscutter;
+import emu.grasscutter.Config.GameServerOptions.InGameConsoleOptions;
 import emu.grasscutter.game.GenshinPlayer;
 import emu.grasscutter.game.friends.Friendship;
 import emu.grasscutter.net.packet.GenshinPacket;
@@ -15,15 +17,16 @@ public class PacketGetPlayerFriendListRsp extends GenshinPacket {
 	public PacketGetPlayerFriendListRsp(GenshinPlayer player) {
 		super(PacketOpcodes.GetPlayerFriendListRsp);
 		
+		InGameConsoleOptions consoleOptions = Grasscutter.getConfig().getGameServerOptions().getInGameConsole();
 		FriendBrief serverFriend = FriendBrief.newBuilder()
 				.setUid(GenshinConstants.SERVER_CONSOLE_UID)
-				.setNickname("Server")
+				.setNickname(consoleOptions.Nickname)
 				.setLevel(1)
-				.setAvatar(HeadImage.newBuilder().setAvatarId(GenshinConstants.MAIN_CHARACTER_FEMALE))
+				.setAvatar(HeadImage.newBuilder().setAvatarId(consoleOptions.AvatarId))
 				.setWorldLevel(0)
 				.setSignature("")
 				.setLastActiveTime((int) (System.currentTimeMillis() / 1000f))
-				.setNameCardId(210001)
+				.setNameCardId(consoleOptions.NameCardId)
 				.setOnlineState(FriendOnlineState.FRIEND_ONLINE)
 				.setParam(1)
 				.setUnk1(1)

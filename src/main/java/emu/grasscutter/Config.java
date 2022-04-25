@@ -21,7 +21,9 @@ public final class Config {
 		return GameServer;
 	}
 
-	public DispatchServerOptions getDispatchOptions() { return DispatchServer; }
+	public DispatchServerOptions getDispatchOptions() {
+		return DispatchServer;
+	}
 
 	public static class DispatchServerOptions {
 		public String Ip = "0.0.0.0";
@@ -48,7 +50,7 @@ public final class Config {
 			public int Port = 22102;
 		}
 	}
-	
+
 	public static class GameServerOptions {
 		public String Name = "Test";
 		public String Ip = "0.0.0.0";
@@ -70,17 +72,31 @@ public final class Config {
 		public int MaxAvatarsInTeamMultiplayer = 4;
 		public int MaxEntityLimit = 1000; // Max entity limit per world. // TODO: Enforce later.
 		public boolean WatchGacha = false;
-		public int[] WelcomeEmotes = {2007, 1002, 4010};
-		public String WelcomeMotd = "Welcome to Grasscutter emu";
 
 		public GameRates Game = new GameRates();
+		public InGameConsoleOptions Console = new InGameConsoleOptions();
 
-		public GameRates getGameRates() { return Game; }
+		public GameRates getGameRates() {
+			return Game;
+		}
+
+		public InGameConsoleOptions getInGameConsole() {
+			return Console;
+		}
 
 		public static class GameRates {
 			public float ADVENTURE_EXP_RATE = 1.0f;
 			public float MORA_RATE = 1.0f;
 			public float DOMAIN_DROP_RATE = 1.0f;
+		}
+
+		public static class InGameConsoleOptions {
+			public String Nickname = "Server";
+			public int AvatarId = GenshinConstants.MAIN_CHARACTER_FEMALE;
+			public int NameCardId = 210001;
+
+			public int[] WelcomeEmotes = { 2007, 1002, 4010 };
+			public String WelcomeMotd = "Welcome to Grasscutter emu";
 		}
 	}
 }
