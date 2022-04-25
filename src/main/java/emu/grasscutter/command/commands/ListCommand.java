@@ -8,7 +8,7 @@ import emu.grasscutter.game.GenshinPlayer;
 import java.util.List;
 import java.util.Map;
 
-@Command(label = "list", description = "List online players")
+@Command(label = "list", description = "List online players", aliases = {"online"})
 public class ListCommand implements CommandHandler {
 
     @Override
