@@ -7,8 +7,7 @@ import emu.grasscutter.game.GenshinPlayer;
 
 import java.util.List;
 
-@Command(label = "godmode", usage = "godmode [playerId]",
-        description = "Prevents you from taking damage", permission = "player.godmode")
+@Command(label = "godmode", usage = "godmode [playerId]", description = "Prevents you from taking damage", permission = "player.godmode")
 public final class GodModeCommand implements CommandHandler {
 
     @Override
@@ -39,7 +38,7 @@ public final class GodModeCommand implements CommandHandler {
         }
 
         targetPlayer.setGodmode(!targetPlayer.inGodmode());
-        sender.dropMessage("Godmode is now " + (targetPlayer.inGodmode() ? "enabled" : "disabled") +
-                "for " + targetPlayer.getNickname() + " .");
+        sender.dropMessage(String.format("Godmode is now %s for %s.",
+                targetPlayer.inGodmode() ? "enabled" : "disabled", targetPlayer.getNickname()));
     }
 }
